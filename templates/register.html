@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% block content %}
+<body>
+<div class="container">
+    <div class="row clearfix">
+        <div class="col-md-12 column">
+            <div class="page-header">
+                <h1>
+                    注册
+                    <small>欢迎来到威尼斯人在线美女网站</small>
+                </h1>
+            </div>
+            <form method="post" action="#" class="form-horizontal" role="form">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="inputUsername" class="col-sm-2 control-label">用户名</label>
+                    <div class="col-sm-3">
+                        <input type="text" class="form-control" id="inputUsername" name="username" placeholder="请输入用户名"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputPassword" class="col-sm-2 control-label">密码</label>
+                    <div class="col-sm-3">
+                        <input type="password" class="form-control" id="inputPassword" name="password" placeholder="请输入密码"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputPassword2" class="col-sm-2 control-label">确认密码</label>
+                    <div class="col-sm-3">
+                        <input type="password" class="form-control" id="inputPassword2" name="password2" placeholder="请再次输入密码"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputEmail" class="col-sm-2 control-label">邮箱</label>
+                    <div class="col-sm-3">
+                        <input type="email" class="form-control" id="inputEmail" name="email" placeholder="请输入邮箱"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputPhone" class="col-sm-2 control-label">手机号</label>
+                    <div class="col-sm-3">
+                        <input type="text" class="form-control" id="inputPhone" name="phone" placeholder="请输入手机号"/>
+                    </div>
+                </div>
+{#                 <div class="form-group">#}
+{#					 <label for="exampleInputFile" class="col-sm-2 control-label">上传头像</label>#}
+{#                    <div class="col-sm-3">#}
+{#                        <input type="file"  id="exampleInputFile" name="photos"/>#}
+{#					<p class="help-block">#}
+{#						请选择您要上传的头像.#}
+{#					</p>#}
+{#				</div>#}
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <button type="submit" class="btn btn-success">注册</button>
+                    </div>
+                </div>
+            </form>
+            <hr>
+        </div>
+    </div>
+</div>
+{% endblock %}

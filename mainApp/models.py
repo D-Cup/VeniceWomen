@@ -48,9 +48,9 @@ from django.db import models
 class User(models.Model):
     userName = models.CharField(max_length=20, unique=True)  # 用户账户，设置唯一
     userPasswd = models.CharField(max_length=32)  # 密码
-    phone = models.CharField(max_length=12)  # 联系方式
-    nickName = models.CharField(max_length=50, verbose_name='昵称', default='')
-    imgPath = models.ImageField(upload_to='static/uploads',max_length=500)  # 头像图片路径
+    phone = models.CharField(max_length=12,default="",null=True)  # 联系方式
+    email= models.CharField(max_length=50, verbose_name='邮箱', null=True,default='')
+    imgPath = models.ImageField(upload_to='static/uploads',max_length=500,default='',null=True)  # 头像图片路径
     state = models.BooleanField(default=True, verbose_name='用户状态')
 
     def delete(self, using=None, keep_parents=False):
