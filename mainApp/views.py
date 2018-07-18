@@ -6,8 +6,15 @@ from django.shortcuts import render, redirect
 from mainApp.models import User
 
 
-def index(request):
-    return render(request,'index.html')
+def index(req):
+    id=req.session.get('user_id')
+    if id==None:
+        return render(req,'index.html')
+    qs = User.objects.filter(id=id)
+    if qs.exists():
+        user = qs.first()
+        return render(req,"index.html",{'userName':user.userName})
+    return render(req, 'index.html')
 
 def crypt(pwd, cryptName='md5'):
     md5 = hashlib.md5()
@@ -17,7 +24,7 @@ def crypt(pwd, cryptName='md5'):
 
 def register(req):
     if req.method == 'GET':
-        return render(req, 'test.html')
+        return render(req, 'register.html')
 
     user = User()
     user.userName = req.POST.get('username')
@@ -25,7 +32,6 @@ def register(req):
     user.email = crypt(req.POST.get('email'))
     user.phone = req.POST.get('phone')
     # user.nickName = req.POST.get('nickname')
-    # 设置用户token
     # user.token = newToken(user.userName)
     user.save()
 
@@ -54,3 +60,10 @@ def login(req):
         return render(req, 'login.html',
                       {'error_msg': '用户登录失败，请重试'})
 
+
+def loginout(req):
+    id = req.session.get('user_id')
+    if id==None:
+        return render(req, 'loginout.html', {'msg': '你可能还没登录!'})
+    req.session.clear()
+    return render(req,'loginout.html',{'msg':'退出成功'})

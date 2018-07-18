@@ -36,15 +36,31 @@
                         </li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
+                        {% if userName %}
                         <li>
-                            <a href="#">登录</a>
+                            <a href="#">{{ userName }}</a>
                         </li>
                         <li>
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">注册</a>
+                            <a href="/loginout/">退出</a>
                         </li>
+{#                        <li>#}
+{#                            <a href="#">&nbsp;&nbsp;&nbsp;</a>#}
+{#                        </li>#}
+                        {% else %}
+                        <li>
+                            <a href="">登录</a>
+                        </li>
+                        <li>
+                            <a href="/register/" class="dropdown-toggle" data-toggle="dropdown">注册</a>
+                        </li>
+                         {% endif %}
+
                     </ul>
                 </div>
-
+            <div>
+                <h4>  </h4>
+                <h4>  </h4>
+            </div>
             </nav>
             {#    头部轮播#}
             <section class="swiper-container" id="topSwiper">
