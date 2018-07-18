@@ -1,6 +1,5 @@
 # -*- coding:utf-8 -*-
 import xadmin
-from mainApp.models import Tag, Art
 from xadmin import views
 
 
@@ -31,5 +30,5 @@ class ArtAdmin:
 
 xadmin.site.register(views.BaseAdminView, BaseSetting)
 xadmin.site.register(views.CommAdminView,GlobalSettings)
-xadmin.site.register(Tag, TagAdmin)
-xadmin.site.register(Art, ArtAdmin)
+# xadmin.site.register(Tag, TagAdmin)
+# xadmin.site.register(Art, ArtAdmin)

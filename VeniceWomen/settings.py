@@ -84,8 +84,16 @@ WSGI_APPLICATION = 'VeniceWomen.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'women',
+        'HOST': '104.225.152.29',
+        'PORT': '3306',
+        'USER': 'women',
+        'PASSWORD': '123456..',
+        'CHARSET': 'utf8',
+        'OPTIONS': {
+            'isolation_level': 'read committed'
+        }
     }
 }
 

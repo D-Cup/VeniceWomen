@@ -1,105 +1,114 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel='stylesheet' id='carousel-css'
-          href='http://www.meinv.hk/wp-content/themes/Grace/includes/css/owl.carousel.min.css?ver=Grace8'
-          type='text/css' media='all'/>
-    <link rel='stylesheet' id='animate-css'
-          href='http://www.meinv.hk/wp-content/themes/Grace/includes/css/animate.min.css?ver=Grace8' type='text/css'
-          media='all'/>
-    <link rel='stylesheet' id='bootstrap-css'
-          href='http://www.meinv.hk/wp-content/themes/Grace/includes/css/bootstrap.min.css?ver=Grace8' type='text/css'
-          media='all'/>
-    <link rel='stylesheet' id='fontello-css'
-          href='http://www.meinv.hk/wp-content/themes/Grace/includes/font-awesome/css/fontello.css?ver=Grace8'
-          type='text/css' media='all'/>
-    <link rel='stylesheet' id='reset-css'
-          href='http://www.meinv.hk/wp-content/themes/Grace/includes/css/reset.css?ver=Grace8' type='text/css'
-          media='all'/>
-    <link rel='stylesheet' id='style-css' href='http://www.meinv.hk/wp-content/themes/Grace/style.css?ver=Grace8'
-          type='text/css' media='all'/>
-    <script type='text/javascript' src='http://www.meinv.hk/wp-includes/js/jquery/jquery.js?ver=1.12.4'></script>
-    <script type='text/javascript'
-            src='http://www.meinv.hk/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.4.1'></script>
-    <!--ADD_CODE_HEADER_START-->
-    <script>
-        var _hmt = _hmt || [];
-        (function () {
-            var hm = document.createElement("script");
-            hm.src = "https://hm.baidu.com/hm.js?f1cc8ef17d832bfa40dc8354bc4dc257";
-            var s = document.getElementsByTagName("script")[0];
-            s.parentNode.insertBefore(hm, s);
-        })();
-    </script>
-
 </head>
+<link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+<link rel="stylesheet" href="{% static 'css/bootstrap-theme.css' %}">
+<link rel="stylesheet" href="{% static 'css/swiper.min.css' %}">
+<script src="{% static 'js/jquery.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.js' %}"></script>
+<script src="{% static 'js/home.js' %}"></script>
+<script src="{% static 'js/swiper.min.js' %}"></script>
 <body>
-
 <div class="container">
     <div class="row clearfix">
         <div class="col-md-12 column">
             <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse"
                             data-target="#bs-example-navbar-collapse-1"><span
                             class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span
                             class="icon-bar"></span><span class="icon-bar"></span></button>
-                    <a class="navbar-brand" href="#">Brand</a>
+                    <a class="navbar-brand" href="#">威尼斯人</a>
                 </div>
 
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
-                        <li class="active">
-                            <a href="#">Link</a>
+                        <li>
+                            <a href="#">威尼斯人美女在线网</a>
                         </li>
                         <li>
-                            <a href="#">Link</a>
-                        </li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown<strong
-                                    class="caret"></strong></a>
+                            <a href="#">主页</a>
                         </li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li>
-                            <a href="#">Link</a>
+                            <a href="#">登录</a>
                         </li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown<strong
-                                    class="caret"></strong></a>
-                            <ul class="dropdown-menu">
-                                <li>
-                                    <a href="#">Action</a>
-                                </li>
-                                <li>
-                                    <a href="#">Another action</a>
-                                </li>
-                                <li>
-                                    <a href="#">Something else here</a>
-                                </li>
-                                <li class="divider">
-                                </li>
-                                <li>
-                                    <a href="#">Separated link</a>
-                                </li>
-                            </ul>
+                        <li>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">注册</a>
                         </li>
                     </ul>
                 </div>
 
             </nav>
+            {#    头部轮播#}
+            <section class="swiper-container" id="topSwiper">
+                <div class="swiper-wrapper">
+                    {#                    {% for topWheel in topWheels %}#}
+                    <div class="swiper-slide">
+                        <img src="http://www.meinv.hk/wp-content/uploads/2018/01/2018012100114454.jpg" width="1330"
+                             height="291">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="http://www.meinv.hk/wp-content/uploads/2018/02/2018020721354012.jpeg" width="1330"
+                             height="291">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="http://www.meinv.hk/wp-content/uploads/2017/11/2017112815342511.jpg" width="1330"
+                             height="291">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="http://www.meinv.hk/wp-content/uploads/2017/11/2017110817274977.jpg" width="1330"
+                             height="291">
+                    </div>
+                    {#                    {% endfor %}#}
+                </div>
+                <!-- 如果需要分页器 -->
+                <div class="swiper-pagination"></div>
+            </section>
+            {#   顶部菜单#}
+            <section class="topMenu">
+                <nav>
+                    <ul>
+                        {% for topmenu in topmenus %}
+                            <li>
+                                <a href="#">
+                                    <img src="http://www.meinv.hk/wp-content/uploads/2017/10/2017103003123880.jpg"/>
+                                    <span>{{ topmenu.name }}</span>
+                                </a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </nav>
+                <menu class="swiper-container swiperMenu" id="swiperMenu">
+                    <ul class="swiper-wrapper">
+                        {% for item in mustbuyList %}
+                            <li class="swiper-slide">
+                                <a><img src="{{ item.img }}"></a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </menu>
+            </section>
+
+
         </div>
-
-
     </div>
     <div class="row clearfix">
         <div class="col-md-8 column">
-            <br/>
-            <br/>
-            <br/>
-            <br/>
+            {#            <div class="alert alert-success alert-dismissable">#}
+            {#                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>#}
+            {#                <h4>#}
+            {#                    注意!#}
+            {#                </h4> <strong>Warning!</strong> Best check yo self, you're not looking too good. <a href="#"#}
+            {#                                                                                                    class="alert-link">alert#}
+            {#                link</a>#}
+            {#            </div>#}
             <div class="content-box">
                 <div class="posts-default-img">
                     <a href="http://www.meinv.hk/?p=2647" title="梁缘 Lyna" target="_blank">
@@ -122,29 +131,314 @@
                             <ul>
                             </ul>
                         </div>
+                        <hr>
+                    </div>
+                </div>
+            </div>
+             <div class="content-box">
+                <div class="posts-default-img">
+                    <a href="http://www.meinv.hk/?p=2647" title="梁缘 Lyna" target="_blank">
+                        <div class="overlay"></div>
+                        <img class="thumbnail"
+                             src="http://www.meinv.hk/wp-content/themes/Grace/timthumb.php?src=http://www.meinv.hk/wp-content/uploads/2018/01/2018012100004172-e1516466594694.jpg&amp;h=300&amp;w=750&amp;zc=1"
+                             alt="梁缘 Lyna">
+                    </a>
+                </div>
+                <div class="posts-default-box">
+                    <div class="posts-default-title">
+                        <div class="post-entry-categories"><a href="http://www.meinv.hk/?tag=lyna" rel="tag">lyna</a><a
+                                href="http://www.meinv.hk/?tag=%e6%a2%81%e7%bc%98" rel="tag">梁缘</a></div>
+                        <h2><a href="http://www.meinv.hk/?p=2647" title="梁缘 Lyna" target="_blank">梁缘 Lyna</a></h2>
+                    </div>
+                    <div class="posts-default-content">
+
+                        <div class="posts-text">梁缘 Lyna / 生日 1993年11月16日 / 故乡 中国</div>
+                        <div class="posts-default-info">
+                            <ul>
+                            </ul>
+                        </div>
+                        <hr>
                     </div>
                 </div>
             </div>
         </div>
-        <hr/>
         <div class="col-md-4 column">
-            <div class="alert alert-dismissable alert-danger">
-                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                <h4>
-                    注意!
-                </h4> <strong>Warning!</strong> Best check yo self, you're not looking too good. <a href="#"
-                                                                                                    class="alert-link">alert
-                link</a>
+            {#            <div class="alert alert-dismissable alert-danger">#}
+            {#                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>#}
+            {#                <h4>#}
+            {#                    注意!#}
+            {#                </h4> <strong>Warning!</strong> Best check yo self, you're not looking too good. <a href="#"#}
+            {#                                                                                                    class="alert-link">alert#}
+            {#                link</a>#}
+            {#            </div>#}
+
+
+            <div class="widget suxingme_tag"><h3><span>近期热门标签</span></h3>
+                <div class="widge_tags" style="border: 10px">
+                    <div class="tag-items">
+                        <span class="label label-info">하지원</span>
+                        <span class="label label-info">瓜皮</span>
+                        <span class="label label-info">冷续</span>
+                        <span class="label label-info">,</span>
+                        <span class="label label-info">我</span>
+                        <span class="label label-info">透尼玛</span>
+                        <span class="label label-info">하지원</span>
+                        <span class="label label-info">하지원</span>
+                        <span class="label label-info">하지원</span>
+                        <span class="label label-info">하지원</span>
+                        <span class="label label-info">하지원</span>
+                        <span class="label label-info">하지원</span>
+                        <span class="label label-info">하지원</span>
+                        <span class="label label-info">하지원</span>
+                        <span class="label label-info">하지원</span>
+                        <span class="label label-info">하지원</span>
+                        <span class="label label-info">하지원</span>
+                        <span class="label label-info">하지원</span>
+                        <span class="label label-info">하지원</span>
+                        <span class="label label-info">하지원</span>
+                        <span class="label label-info">하지원</span>
+                        <span class="label label-info">하지원</span>
+                        <span class="label label-info">하지원</span>
+                        <span class="label label-info">하지원</span>
+                        <span class="label label-info">하지원</span>
+                        <span class="label label-info">하지원</span>
+                        <span class="label label-info">하지원</span>
+                        <span class="label label-info">하지원</span>
+                    </div>
+                </div>
             </div>
+
+             <div>
+                <br>
+                <br>
+                <br>
+                <br>
+           </div>
+
+
+            <div class="widget widget_suxingme_mostviews"><h3><span>近期热门美女</span></h3>	<ul class="widget_suxingme_post">
+        				<li>
+					<a href="http://www.meinv.hk/?p=2179" title="陈静 DaDa">
+						<div class="overlay"></div>
+
+													<img class="thumbnail" src="http://www.meinv.hk/wp-content/themes/Grace/timthumb.php?src=http://www.meinv.hk/wp-content/uploads/2016/09/2017102622211662.jpeg&amp;h=170&amp;w=299.98&amp;zc=1" alt="陈静 DaDa">
+
+						<div class="title">
+							<div class="entry-meta"><span>2016-09-28</span><span><i class="icon-eye"></i> 2,857</span></div>
+							<h4>陈静 DaDa</h4>
+						</div>
+					</a>
+				</li>
+						<li>
+					<a href="http://www.meinv.hk/?p=2403" title="刘奕宁 Lynn">
+						<div class="overlay"></div>
+
+													<img class="thumbnail" src="http://www.meinv.hk/wp-content/themes/Grace/timthumb.php?src=http://www.meinv.hk/wp-content/uploads/2017/10/2017103003250727.jpg&amp;h=170&amp;w=299.98&amp;zc=1" alt="刘奕宁 Lynn">
+
+						<div class="title">
+							<div class="entry-meta"><span>2017-10-29</span><span><i class="icon-eye"></i> 2,751</span></div>
+							<h4>刘奕宁 Lynn</h4>
+						</div>
+					</a>
+				</li>
+						<li>
+					<a href="http://www.meinv.hk/?p=2194" title="王鸥 Angel wang">
+						<div class="overlay"></div>
+
+													<img class="thumbnail" src="http://www.meinv.hk/wp-content/themes/Grace/timthumb.php?src=http://www.meinv.hk/wp-content/uploads/2016/11/2017102621310713-e1509024743916.jpg&amp;h=170&amp;w=299.98&amp;zc=1" alt="王鸥 Angel wang">
+
+						<div class="title">
+							<div class="entry-meta"><span>2016-11-04</span><span><i class="icon-eye"></i> 2,462</span></div>
+							<h4>王鸥 Angel wang</h4>
+						</div>
+					</a>
+				</li>
+						<li>
+					<a href="http://www.meinv.hk/?p=2707" title="于文文 Kelly">
+						<div class="overlay"></div>
+
+													<img class="thumbnail" src="http://www.meinv.hk/wp-content/themes/Grace/timthumb.php?src=http://www.meinv.hk/wp-content/uploads/2018/03/2018030817283240-e1520501416842.jpg&amp;h=170&amp;w=299.98&amp;zc=1" alt="于文文 Kelly">
+
+						<div class="title">
+							<div class="entry-meta"><span>2018-03-08</span><span><i class="icon-eye"></i> 2,135</span></div>
+							<h4>于文文 Kelly</h4>
+						</div>
+					</a>
+				</li>
+						<li>
+					<a href="http://www.meinv.hk/?p=2314" title="慕羽茜">
+						<div class="overlay"></div>
+
+													<img class="thumbnail" src="http://www.meinv.hk/wp-content/themes/Grace/timthumb.php?src=http://www.meinv.hk/wp-content/uploads/2017/10/2017103002542173-e1509303275780.jpg&amp;h=170&amp;w=299.98&amp;zc=1" alt="慕羽茜">
+
+						<div class="title">
+							<div class="entry-meta"><span>2017-10-29</span><span><i class="icon-eye"></i> 2,124</span></div>
+							<h4>慕羽茜</h4>
+						</div>
+					</a>
+				</li>
+						<li>
+					<a href="http://www.meinv.hk/?p=2384" title="张萌 Alina Zhang">
+						<div class="overlay"></div>
+
+													<img class="thumbnail" src="http://www.meinv.hk/wp-content/themes/Grace/timthumb.php?src=http://www.meinv.hk/wp-content/uploads/2017/10/2017103003231456.jpg&amp;h=170&amp;w=299.98&amp;zc=1" alt="张萌 Alina Zhang">
+
+						<div class="title">
+							<div class="entry-meta"><span>2017-10-29</span><span><i class="icon-eye"></i> 2,121</span></div>
+							<h4>张萌 Alina Zhang</h4>
+						</div>
+					</a>
+				</li>
+						<li>
+					<a href="http://www.meinv.hk/?p=2647" title="梁缘 Lyna">
+						<div class="overlay"></div>
+
+													<img class="thumbnail" src="http://www.meinv.hk/wp-content/themes/Grace/timthumb.php?src=http://www.meinv.hk/wp-content/uploads/2018/01/2018012100004172-e1516466594694.jpg&amp;h=170&amp;w=299.98&amp;zc=1" alt="梁缘 Lyna">
+
+						<div class="title">
+							<div class="entry-meta"><span>2018-01-20</span><span><i class="icon-eye"></i> 1,808</span></div>
+							<h4>梁缘 Lyna</h4>
+						</div>
+					</a>
+				</li>
+						<li>
+					<a href="http://www.meinv.hk/?p=2701" title="徐小飒">
+						<div class="overlay"></div>
+
+													<img class="thumbnail" src="http://www.meinv.hk/wp-content/themes/Grace/timthumb.php?src=http://www.meinv.hk/wp-content/uploads/2018/02/2018020721314456-e1518010359754.jpg&amp;h=170&amp;w=299.98&amp;zc=1" alt="徐小飒">
+
+						<div class="title">
+							<div class="entry-meta"><span>2018-02-07</span><span><i class="icon-eye"></i> 1,679</span></div>
+							<h4>徐小飒</h4>
+						</div>
+					</a>
+				</li>
+						<li>
+					<a href="http://www.meinv.hk/?p=2602" title="张予馨">
+						<div class="overlay"></div>
+
+													<img class="thumbnail" src="http://www.meinv.hk/wp-content/themes/Grace/timthumb.php?src=http://www.meinv.hk/wp-content/uploads/2017/12/2017120615411798-e1512546471278.jpeg&amp;h=170&amp;w=299.98&amp;zc=1" alt="张予馨">
+
+						<div class="title">
+							<div class="entry-meta"><span>2017-12-06</span><span><i class="icon-eye"></i> 1,574</span></div>
+							<h4>张予馨</h4>
+						</div>
+					</a>
+				</li>
+						<li>
+					<a href="http://www.meinv.hk/?p=2288" title="戚蓝尹 Niania Elva">
+						<div class="overlay"></div>
+
+													<img class="thumbnail" src="http://www.meinv.hk/wp-content/themes/Grace/timthumb.php?src=http://www.meinv.hk/wp-content/uploads/2017/10/2017103002473066-e1509302863600.jpg&amp;h=170&amp;w=299.98&amp;zc=1" alt="戚蓝尹 Niania Elva">
+
+						<div class="title">
+							<div class="entry-meta"><span>2017-10-29</span><span><i class="icon-eye"></i> 1,482</span></div>
+							<h4>戚蓝尹 Niania Elva</h4>
+						</div>
+					</a>
+				</li>
+						<li>
+					<a href="http://www.meinv.hk/?p=2257" title="秋瓷炫 Choo Ja Hyun">
+						<div class="overlay"></div>
+
+													<img class="thumbnail" src="http://www.meinv.hk/wp-content/themes/Grace/timthumb.php?src=http://www.meinv.hk/wp-content/uploads/2017/10/2017102623384948-e1509032349758.jpg&amp;h=170&amp;w=299.98&amp;zc=1" alt="秋瓷炫 Choo Ja Hyun">
+
+						<div class="title">
+							<div class="entry-meta"><span>2017-10-26</span><span><i class="icon-eye"></i> 1,474</span></div>
+							<h4>秋瓷炫 Choo Ja Hyun</h4>
+						</div>
+					</a>
+				</li>
+						<li>
+					<a href="http://www.meinv.hk/?p=2630" title="郭雪芙 Puff Kuo">
+						<div class="overlay"></div>
+
+													<img class="thumbnail" src="http://www.meinv.hk/wp-content/themes/Grace/timthumb.php?src=http://www.meinv.hk/wp-content/uploads/2017/12/2017120615524167-e1512546829523.jpg&amp;h=170&amp;w=299.98&amp;zc=1" alt="郭雪芙 Puff Kuo">
+
+						<div class="title">
+							<div class="entry-meta"><span>2017-12-06</span><span><i class="icon-eye"></i> 1,416</span></div>
+							<h4>郭雪芙 Puff Kuo</h4>
+						</div>
+					</a>
+				</li>
+						<li>
+					<a href="http://www.meinv.hk/?p=2691" title="孙文婷">
+						<div class="overlay"></div>
+
+													<img class="thumbnail" src="http://www.meinv.hk/wp-content/themes/Grace/timthumb.php?src=http://www.meinv.hk/wp-content/uploads/2018/02/2018020721262499-e1518010102830.jpg&amp;h=170&amp;w=299.98&amp;zc=1" alt="孙文婷">
+
+						<div class="title">
+							<div class="entry-meta"><span>2018-02-07</span><span><i class="icon-eye"></i> 1,359</span></div>
+							<h4>孙文婷</h4>
+						</div>
+					</a>
+				</li>
+						<li>
+					<a href="http://www.meinv.hk/?p=2429" title="苗苗 Vivi">
+						<div class="overlay"></div>
+
+													<img class="thumbnail" src="http://www.meinv.hk/wp-content/themes/Grace/timthumb.php?src=http://www.meinv.hk/wp-content/uploads/2017/11/2017110817105725.jpg&amp;h=170&amp;w=299.98&amp;zc=1" alt="苗苗 Vivi">
+
+						<div class="title">
+							<div class="entry-meta"><span>2017-11-08</span><span><i class="icon-eye"></i> 1,336</span></div>
+							<h4>苗苗 Vivi</h4>
+						</div>
+					</a>
+				</li>
+						<li>
+					<a href="http://www.meinv.hk/?p=2483" title="菅纫姿 Joyce">
+						<div class="overlay"></div>
+
+													<img class="thumbnail" src="http://www.meinv.hk/wp-content/themes/Grace/timthumb.php?src=http://www.meinv.hk/wp-content/uploads/2017/11/2017110817241027.jpg&amp;h=170&amp;w=299.98&amp;zc=1" alt="菅纫姿 Joyce">
+
+						<div class="title">
+							<div class="entry-meta"><span>2017-11-08</span><span><i class="icon-eye"></i> 1,334</span></div>
+							<h4>菅纫姿 Joyce</h4>
+						</div>
+					</a>
+				</li>
+						<li>
+					<a href="http://www.meinv.hk/?p=2697" title="王姿允">
+						<div class="overlay"></div>
+
+													<img class="thumbnail" src="http://www.meinv.hk/wp-content/themes/Grace/timthumb.php?src=http://www.meinv.hk/wp-content/uploads/2018/02/2018020721295672-e1518010250992.jpg&amp;h=170&amp;w=299.98&amp;zc=1" alt="王姿允">
+
+						<div class="title">
+							<div class="entry-meta"><span>2018-02-15</span><span><i class="icon-eye"></i> 1,234</span></div>
+							<h4>王姿允</h4>
+						</div>
+					</a>
+				</li>
+						<li>
+					<a href="http://www.meinv.hk/?p=2567" title="孙艺珍 손예진 Son Ye Jin">
+						<div class="overlay"></div>
+
+													<img class="thumbnail" src="http://www.meinv.hk/wp-content/themes/Grace/timthumb.php?src=http://www.meinv.hk/wp-content/uploads/2017/11/2017112815323635-e1511854398983.jpg&amp;h=170&amp;w=299.98&amp;zc=1" alt="孙艺珍 손예진 Son Ye Jin">
+
+						<div class="title">
+							<div class="entry-meta"><span>2017-11-28</span><span><i class="icon-eye"></i> 1,018</span></div>
+							<h4>孙艺珍 손예진 Son Ye Jin</h4>
+						</div>
+					</a>
+				</li>
+						<li>
+					<a href="http://www.meinv.hk/?p=2668" title="杨凯迪 Cady">
+						<div class="overlay"></div>
+
+													<img class="thumbnail" src="http://www.meinv.hk/wp-content/themes/Grace/timthumb.php?src=http://www.meinv.hk/wp-content/uploads/2018/01/2018012100275538-e1516465997951.jpg&amp;h=170&amp;w=299.98&amp;zc=1" alt="杨凯迪 Cady">
+
+						<div class="title">
+							<div class="entry-meta"><span>2018-01-20</span><span><i class="icon-eye"></i> 994</span></div>
+							<h4>杨凯迪 Cady</h4>
+						</div>
+					</a>
+				</li>
+			</ul>
+</div>
+
         </div>
     </div>
 </div>
-<script type='text/javascript'
-        src='http://www.meinv.hk/wp-content/themes/Grace/js/bootstrap.min.js?ver=Grace8'></script>
-<script type='text/javascript' src='http://www.meinv.hk/wp-content/themes/Grace/js/plugins.min.js?ver=Grace8'></script>
-<script type='text/javascript' src='http://www.meinv.hk/wp-content/themes/Grace/js/suxingme.js?ver=Grace8'></script>
-<script type='text/javascript'
-        src='http://www.meinv.hk/wp-content/themes/Grace/js/owl.carousel.min.js?ver=Grace8'></script>
-<script type='text/javascript' src='http://www.meinv.hk/wp-content/themes/Grace/js/wow.min.js?ver=Grace8'></script>
+
 </body>
 </html>
