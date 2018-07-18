@@ -1,0 +1,10 @@
+*.pyc
+*.db
+*.log
+.idea
+.venv
+__pycache__
+db.sqlite3
+.DS_Store
+extrs_apps/.DS_Store
+VeniceWomen/settings.py
