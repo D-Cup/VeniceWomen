@@ -76,7 +76,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'Tadmin.wsgi.application'
+WSGI_APPLICATION = 'VeniceWomen.wsgi.application'
 
 
 # Database
