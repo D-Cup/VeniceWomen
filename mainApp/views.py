@@ -7,14 +7,15 @@ from mainApp.models import User
 
 
 def index(req):
-    id=req.session.get('user_id')
-    if id==None:
-        return render(req,'index.html')
+    id = req.session.get('user_id')
+    if id == None:
+        return render(req, 'index.html')
     qs = User.objects.filter(id=id)
     if qs.exists():
         user = qs.first()
-        return render(req,"index.html",{'userName':user.userName})
+        return render(req, "index.html", {'userName': user.userName})
     return render(req, 'index.html')
+
 
 def crypt(pwd, cryptName='md5'):
     md5 = hashlib.md5()
@@ -31,8 +32,6 @@ def register(req):
     user.userPasswd = crypt(req.POST.get('password'))
     user.email = crypt(req.POST.get('email'))
     user.phone = req.POST.get('phone')
-    # user.nickName = req.POST.get('nickname')
-    # user.token = newToken(user.userName)
     user.save()
 
     # 将id设置到session中
@@ -43,11 +42,12 @@ def register(req):
 
 def login(req):
     if req.method == 'GET':
+        if req.session.get('user_id'):
+            return redirect('/index')
         return render(req, 'login.html')
 
     username = req.POST.get('username')
     password = req.POST.get('password')
-
     qs = User.objects.filter(userName=username,
                              userPasswd=crypt(password))
     if qs.exists():
@@ -63,7 +63,10 @@ def login(req):
 
 def loginout(req):
     id = req.session.get('user_id')
-    if id==None:
+    if id == None:
         return render(req, 'loginout.html', {'msg': '你可能还没登录!'})
     req.session.clear()
-    return render(req,'loginout.html',{'msg':'退出成功'})
+    return render(req, 'loginout.html', {'msg': '退出成功'})
+
+def show(req):
+    return render(req, 'show.html')
