@@ -33,7 +33,7 @@ meta
                             <a href="#">威尼斯人美女在线网</a>
                         </li>
                         <li>
-                            <a href="/index/">主页</a>
+                            <a href="/1">主页</a>
                         </li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
@@ -42,14 +42,14 @@ meta
                                 <a href="#">{{ userName }}</a>
                             </li>
                             <li>
-                                <a href="/loginout/">退出</a>
+                                <a href="/app/loginout/">退出</a>
                             </li>
                         {% else %}
                             <li>
-                                <a href="">登录</a>
+                                <a href="/app/login">登录</a>
                             </li>
                             <li>
-                                <a href="/register/" class="dropdown-toggle" data-toggle="dropdown">注册</a>
+                                <a href="/app/register/" class="dropdown-toggle" data-toggle="dropdown">注册</a>
                             </li>
                         {% endif %}
 
@@ -106,7 +106,7 @@ meta
             {% for content in contents %}
                 <div class="content-box">
                     <div class="posts-default-img">
-                        <a href="http://www.meinv.hk/?p=2403" title="{{ content.title }}" target="_blank">
+                        <a href="#" title="{{ content.title }}" target="_blank">
                             <div class="overlay"></div>
                             <img style="width: 710px;height:284px;" class="thumbnail"
                                  src="{{ content.images }}"
@@ -115,11 +115,11 @@ meta
                     </div>
                     <div class="posts-default-box">
                         <div class="posts-default-title">
-                            <div class="post-entry-categories"><a href="http://www.meinv.hk/?tag=lyna"
+                            <div class="post-entry-categories"><a href="#"
                                                                   rel="tag">{{ content.Ename }}</a><a
-                                    href="http://www.meinv.hk/?tag=%e6%a2%81%e7%bc%98" rel="tag">{{ content.name }}</a>
+                                    href="#" rel="tag">{{ content.name }}</a>
                             </div>
-                            <h2><a href="http://www.meinv.hk/?p=2403" title="梁缘 Lyna"
+                            <h2><a href="#" title=""
                                    target="_blank">{{ content.title }}</a></h2>
                         </div>
                         <div class="posts-default-content">
@@ -162,7 +162,7 @@ meta
                 <ul style="list-style: none" class="widget_suxingme_post">
                     {% for orderImg in orderImgs %}
                         <li>
-                            <a href="http://www.meinv.hk/?p=2403" title="{{ orderImg.title }}">
+                            <a href="#" title="{{ orderImg.title }}">
                                 <div class="overlay"></div>
 
                                 <img style="height: 175px;width: 300px" class="thumbnail"

@@ -86,10 +86,10 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'women',
-        'HOST': '104.225.152.29',
+        'HOST': '10.35.163.60',
         'PORT': '3306',
-        'USER': 'women',
-        'PASSWORD': '123456..',
+        'USER': 'root',
+        'PASSWORD': 'root',
         'CHARSET': 'utf8',
         'OPTIONS': {
             'isolation_level': 'read committed'
