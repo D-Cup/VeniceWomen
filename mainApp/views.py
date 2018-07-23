@@ -3,21 +3,19 @@ import hashlib
 from django.shortcuts import render, redirect
 
 # Create your views here.
-from mainApp.models import User
+from mainApp.models import User, swImg, content
 
 
-def index(req):
-    id = req.session.get('user_id')
-    if id == None:
-        return render(req, 'index.html')
-    qs = User.objects.filter(id=id)
-    if qs.exists():
-        user = qs.first()
-        return render(req, "index.html", {'userName': user.userName})
-    return render(req, 'index.html')
+def index(request):
+    sImg = swImg.objects.all()
+    contents = content.objects.all()
+    orderImg = content.objects.order_by('-cnt').all()
+    return render(request, 'index.html',
+                  {'sImgs':sImg,
+                    'contents':contents,
+                   'orderImgs':orderImg})
 
-
-def crypt(pwd):
+def crypt(pwd, cryptName='md5'):
     md5 = hashlib.md5()
     md5.update(pwd.encode())
     return md5.hexdigest()
@@ -32,6 +30,9 @@ def register(req):
     user.userPasswd = crypt(req.POST.get('password'))
     user.email = crypt(req.POST.get('email'))
     user.phone = req.POST.get('phone')
+    # user.nickName = req.POST.get('nickname')
+    # 设置用户token
+    # user.token = newToken(user.userName)
     user.save()
 
     # 将id设置到session中
@@ -42,12 +43,11 @@ def register(req):
 
 def login(req):
     if req.method == 'GET':
-        if req.session.get('user_id'):
-            return redirect('/index')
         return render(req, 'login.html')
 
     username = req.POST.get('username')
     password = req.POST.get('password')
+
     qs = User.objects.filter(userName=username,
                              userPasswd=crypt(password))
     if qs.exists():
@@ -60,13 +60,3 @@ def login(req):
         return render(req, 'login.html',
                       {'error_msg': '用户登录失败，请重试'})
 
-
-def loginout(req):
-    id = req.session.get('user_id')
-    if id == None:
-        return render(req, 'loginout.html', {'msg': '你可能还没登录!'})
-    req.session.clear()
-    return render(req, 'loginout.html', {'msg': '退出成功'})
-
-def show(req):
-    return render(req, 'show.html')
