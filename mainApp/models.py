@@ -62,3 +62,18 @@ class User(models.Model):
         db_table = 'weomen_user'
         verbose_name = '用户'
         verbose_name_plural = verbose_name
+
+class swImg(models.Model):
+    name = models.CharField(max_length=20)
+    image = models.CharField(max_length=300)
+    class Meta:
+        db_table = 'weomen_swImg'
+
+class content(models.Model):
+    title = models.CharField(max_length=200,default='',null=True)
+    images = models.CharField(max_length=300,default='',null=True)
+    content = models.TextField(default='',null=True)
+    user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
+    cnt = models.IntegerField(default=0,null=True)
+    class Meta:
+        db_table = 'weomen_content'

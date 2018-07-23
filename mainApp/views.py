@@ -3,18 +3,25 @@ import hashlib
 from django.shortcuts import render, redirect
 
 # Create your views here.
-from mainApp.models import User
+from mainApp.models import User, swImg, content
 
 
 def index(req):
     id = req.session.get('user_id')
+    sImg = swImg.objects.all()
+    contents = content.objects.all()
+    orderImg = content.objects.order_by('-cnt').all()
     if id == None:
         return render(req, 'index.html')
     qs = User.objects.filter(id=id)
     if qs.exists():
         user = qs.first()
-        return render(req, "index.html", {'userName': user.userName})
-    return render(req, 'index.html')
+        return render(req, "index.html", {'userName': user.userName,'sImgs':sImg,
+                    'contents':contents,
+                   'orderImgs':orderImg})
+    return render(req, 'index.html',{'sImgs':sImg,
+                    'contents':contents,
+                   'orderImgs':orderImg})
 
 
 def crypt(pwd):
