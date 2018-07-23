@@ -17,7 +17,7 @@ def index(req):
     return render(req, 'index.html')
 
 
-def crypt(pwd, cryptName='md5'):
+def crypt(pwd):
     md5 = hashlib.md5()
     md5.update(pwd.encode())
     return md5.hexdigest()
