@@ -4,24 +4,38 @@ from django.shortcuts import render, redirect
 
 # Create your views here.
 from mainApp.models import User, swImg, content
+from django.core.paginator import Paginator
 
 
-def index(req):
+def index(req, page):
     id = req.session.get('user_id')
+
     sImg = swImg.objects.all()
     contents = content.objects.all()
     orderImg = content.objects.order_by('-cnt').all()
+
+    paginator = Paginator(contents, 15)
+    paginator2 = Paginator(orderImg, 15)
+    pager1 = paginator.page(page)
+    pager2 = paginator2.page(page)
+    print(pager1)
+
     if id == None:
-        return render(req, 'index.html')
+        return render(req, 'index.html', {'sImgs': sImg,
+                                          'contents': pager1.object_list,
+                                          'orderImgs': pager2.object_list, })
     qs = User.objects.filter(id=id)
     if qs.exists():
         user = qs.first()
-        return render(req, "index.html", {'userName': user.userName,'sImgs':sImg,
-                    'contents':contents,
-                   'orderImgs':orderImg})
-    return render(req, 'index.html',{'sImgs':sImg,
-                    'contents':contents,
-                   'orderImgs':orderImg})
+        return render(req, "index.html", {'userName': user.userName,
+                                          'sImgs': sImg,
+                                          'contents': pager1.object_list,
+                                          'orderImgs': pager2.object_list,
+                                          })
+    return render(req, 'index.html', {'sImgs': sImg,
+                                      'contents': pager1.object_list,
+                                      'orderImgs': pager2.object_list,
+                                      })
 
 
 def crypt(pwd):
@@ -42,7 +56,7 @@ def register(req):
     user.save()
 
     # 将id设置到session中
-    resp = redirect('/index')
+    resp = redirect('')
     req.session['uesr_id'] = user.id
     return resp
 
@@ -50,7 +64,7 @@ def register(req):
 def login(req):
     if req.method == 'GET':
         if req.session.get('user_id'):
-            return redirect('/index')
+            return redirect('/1')
         return render(req, 'login.html')
 
     username = req.POST.get('username')
@@ -62,7 +76,7 @@ def login(req):
         # 向session中存放user_id, 用于判断用户是否登录
         req.session['user_id'] = user.id
         # 用户登录成功
-        return redirect('/index')
+        return redirect('/1')
     else:
         return render(req, 'login.html',
                       {'error_msg': '用户登录失败，请重试'})
@@ -74,6 +88,7 @@ def loginout(req):
         return render(req, 'loginout.html', {'msg': '你可能还没登录!'})
     req.session.clear()
     return render(req, 'loginout.html', {'msg': '退出成功'})
+
 
 def show(req):
     return render(req, 'show.html')

@@ -18,10 +18,13 @@ from django.urls import path, include
 
 import xadmin
 
+from mainApp import views
+
 urlpatterns = [
     # path('admin/', admin.site.urls),
     path('xadmin/', xadmin.site.urls),
-    path('', include('mainApp.urls')),
+    path('<int:page>', views.index),
+    path('app/', include('mainApp.urls')),
     path('ueditor/',include('DjangoUeditor.urls')),
 
 ]
