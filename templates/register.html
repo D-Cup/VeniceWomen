@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load static %}
 {% block content %}
 <body>
 <div class="container">
@@ -57,26 +58,15 @@
                 </div>
             </form>
             <hr>
-             <div class="alert alert-dismissable alert-info">
-                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                <h4  id="errMsg">
-                    {{ error_msg }}
-                </h4>
-            </div>
         </div>
     </div>
 </div>
-
 {% endblock %}
-{#   <script src="{% static 'js/jquery.min.js' %}"></script>#}
-{% block extjs %}
-     <script>
+{#<script src="{% static 'js/register.js' %}"></script>#}
+<script>
     $(function () {
-        $('#inputUsername').blur(function () {
-            if (this.value.trim().length==0){
-                    $('#errMsg').text('用户名不能为空')
-            }
-        })
+    $('#inputUsername').blur(function () {
+        console.log(1111111)
     })
-    </script>
-{% endblock %}
+})
+</script>

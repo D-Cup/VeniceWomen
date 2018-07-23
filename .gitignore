@@ -8,3 +8,5 @@ db.sqlite3
 .DS_Store
 extrs_apps/.DS_Store
 VeniceWomen/settings.py
+xadmin-django2.zip
+extrs_apps/*
