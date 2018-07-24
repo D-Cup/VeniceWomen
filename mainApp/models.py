@@ -1,6 +1,7 @@
 from DjangoUeditor.models import UEditorField
 from django.db import models
 
+
 # Create your models here.
 
 # class Tag(models.Model):
@@ -48,9 +49,9 @@ from django.db import models
 class User(models.Model):
     userName = models.CharField(max_length=20, unique=True)  # 用户账户，设置唯一
     userPasswd = models.CharField(max_length=32)  # 密码
-    phone = models.CharField(max_length=12,default="",null=True)  # 联系方式
-    email= models.CharField(max_length=50, verbose_name='邮箱', null=True,default='')
-    imgPath = models.ImageField(upload_to='static/uploads',max_length=500,default='',null=True)  # 头像图片路径
+    phone = models.CharField(max_length=12, default="", null=True)  # 联系方式
+    email = models.CharField(max_length=50, verbose_name='邮箱', null=True, default='')
+    imgPath = models.ImageField(upload_to='static/uploads', max_length=500, default='', null=True)  # 头像图片路径
     state = models.BooleanField(default=True, verbose_name='用户状态')
 
     def delete(self, using=None, keep_parents=False):
@@ -63,17 +64,21 @@ class User(models.Model):
         verbose_name = '用户'
         verbose_name_plural = verbose_name
 
+
 class swImg(models.Model):
     name = models.CharField(max_length=20)
     image = models.CharField(max_length=300)
+
     class Meta:
         db_table = 'weomen_swImg'
 
+
 class content(models.Model):
-    title = models.CharField(max_length=200,default='',null=True)
-    images = models.CharField(max_length=300,default='',null=True)
-    content = models.TextField(default='',null=True)
+    title = models.CharField(max_length=200, default='', null=True)
+    images = models.CharField(max_length=300, default='', null=True)
+    content = models.TextField(default='', null=True)
     user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
-    cnt = models.IntegerField(default=0,null=True)
+    cnt = models.IntegerField(default=0, null=True)
+
     class Meta:
         db_table = 'weomen_content'

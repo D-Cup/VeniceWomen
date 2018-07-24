@@ -17,8 +17,7 @@ import sys
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # sys.path.insert(0,os.path.join(BASE_DIR,'apps'))
-sys.path.insert(0,os.path.join(BASE_DIR,'extra_apps'))
-
+sys.path.insert(0, os.path.join(BASE_DIR, 'extra_apps'))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
@@ -30,7 +29,6 @@ SECRET_KEY = 'xl#9=5#2%6+s&bb%z)zk43dw9r4tp5d)gd$2t_8@56!2!jhl9='
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
 
 # Application definition
 
@@ -78,25 +76,38 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'VeniceWomen.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'women',
+#         'HOST': '10.35.163.60',
+#         'PORT': '3306',
+#         'USER': 'root',
+#         'PASSWORD': 'root',
+#         'CHARSET': 'utf8',
+#         'OPTIONS': {
+#             'isolation_level': 'read committed'
+#         }
+#     }
+# }
 
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'women',
-        'HOST': '10.35.163.60',
+        'HOST': '104.225.152.29',
         'PORT': '3306',
-        'USER': 'root',
-        'PASSWORD': 'root',
+        'USER': 'women',
+        'PASSWORD': '123456..',
         'CHARSET': 'utf8',
         'OPTIONS': {
             'isolation_level': 'read committed'
         }
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/2.0/ref/settings/#auth-password-validators
@@ -116,7 +127,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/2.0/topics/i18n/
 
@@ -130,13 +140,12 @@ USE_L10N = True
 
 USE_TZ = False
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS =[
-    os.path.join(BASE_DIR,'static')
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static')
 ]
-MEDIA_ROOT= os.path.join(BASE_DIR,'static/uploads')
-MEDIA_URL= 'static/uploads/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'static/uploads')
+MEDIA_URL = 'static/uploads/'

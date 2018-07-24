@@ -25,6 +25,6 @@ urlpatterns = [
     path('xadmin/', xadmin.site.urls),
     path('<int:page>', views.index),
     path('app/', include('mainApp.urls')),
-    path('ueditor/',include('DjangoUeditor.urls')),
+    path('ueditor/', include('DjangoUeditor.urls')),
 
 ]
