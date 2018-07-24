@@ -1,8 +1,15 @@
 import hashlib
+import uuid
 
+import os
+
+from django.http import JsonResponse
 from django.shortcuts import render, redirect
 
 # Create your views here.
+from django.views.decorators.csrf import csrf_exempt
+
+from VeniceWomen import settings
 from mainApp.models import User, swImg, content
 from django.core.paginator import Paginator
 
@@ -90,5 +97,70 @@ def loginout(req):
     return render(req, 'loginout.html', {'msg': '退出成功'})
 
 
+def mine(req):
+    id = req.session.get('user_id')
+    user = User.objects.get(id=id)
+
+    if not req.session.get('user_id'):
+        return redirect('/app/login')
+    return render(req, 'mine.html',
+                  {'loginUser': user})
+
+
 def show(req):
     return render(req, 'show.html')
+
+
+def newFileName(contentType):
+    fileName = crypt(str(uuid.uuid4()))
+    extName = '.jpg'
+    if contentType == 'image/png':
+        extName = '.png'
+    return fileName + extName
+
+
+@csrf_exempt  # 不做csrf_token验证
+def upload(req):
+    msg = {}
+    session_id = req.session.get('user_id')
+    if not session_id:
+        msg['state'] = 'fail'
+        msg['msg'] = '请先登录'
+    else:
+        qs = User.objects.filter(id=session_id)
+        if not qs.exists():
+            msg['state'] = 'fail'
+            msg['msg'] = '登录失效，请重新登录'
+        else:
+            # 开始上传
+            uploadFile = req.FILES.get('img')
+            saveFileName = newFileName(uploadFile.content_type)
+            saveFilePath = os.path.join(settings.MEDIA_ROOT, saveFileName)
+
+            # 将上传文件的数据分段写入到目标文件（存入到当前服务端）中
+            with open(saveFilePath, 'wb') as f:
+                for part in uploadFile.chunks():
+                    f.write(part)
+                    f.flush()
+
+            # 将上传文件的路径更新到用户
+            qs.update(imgPath='uploads/' + saveFileName)
+            msg['state'] = 'ok'
+            msg['msg'] = '上传成功'
+            msg['code'] = '200'
+            msg['path'] = 'uploads/' + saveFileName
+
+    return JsonResponse(msg)
+
+
+def change_password(req):
+    if req.method == 'GET':
+        pass
+    id = req.session.get('user_id')
+    print(id)
+    user = User.objects.get(id=id)
+    pass1=req.POST.get('password1')
+    print(pass1)
+    user.userPasswd = crypt(req.POST.get('password'))
+    user.save()
+    return redirect('/app/mine')
