@@ -79,35 +79,22 @@ WSGI_APPLICATION = 'VeniceWomen.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.mysql',
-#         'NAME': 'women',
-#         'HOST': '10.35.163.60',
-#         'PORT': '3306',
-#         'USER': 'root',
-#         'PASSWORD': 'root',
-#         'CHARSET': 'utf8',
-#         'OPTIONS': {
-#             'isolation_level': 'read committed'
-#         }
-#     }
-# }
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'women',
-        'HOST': '104.225.152.29',
+        'NAME': '',
+        'HOST': '',
         'PORT': '3306',
-        'USER': 'women',
-        'PASSWORD': '123456..',
+        'USER': '',
+        'PASSWORD': '',
         'CHARSET': 'utf8',
         'OPTIONS': {
             'isolation_level': 'read committed'
         }
     }
 }
+
+
 
 # Password validation
 # https://docs.djangoproject.com/en/2.0/ref/settings/#auth-password-validators

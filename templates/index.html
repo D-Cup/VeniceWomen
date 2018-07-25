@@ -135,6 +135,15 @@ meta
                     </div>
                 </div>
             {% endfor %}
+            <ul class="pagination">
+                {% for pageNum in page_range  %}
+                    {% if pagenNum == current_page %}
+                    {% endif %}
+                    <li>
+					 <a href="/{{ pageNum }}/">{{ pageNum }}</a>
+				</li>
+                {% endfor %}
+			</ul>
 
         </div>
         <div class="col-md-4 column">
