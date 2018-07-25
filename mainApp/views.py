@@ -22,15 +22,16 @@ def index(req, page):
     orderImg = content.objects.order_by('-cnt').all()
 
     paginator = Paginator(contents, 15)
-    paginator2 = Paginator(orderImg, 15)
+    paginator2 = Paginator(orderImg, 20)
     pager1 = paginator.page(page)
     pager2 = paginator2.page(page)
-    print(pager1)
-
     if id == None:
         return render(req, 'index.html', {'sImgs': sImg,
                                           'contents': pager1.object_list,
-                                          'orderImgs': pager2.object_list, })
+                                          'orderImgs': pager2.object_list,
+                                          'current_page': str(page),
+                                          'page_range': paginator.page_range
+                                          })
     qs = User.objects.filter(id=id)
     if qs.exists():
         user = qs.first()
@@ -38,10 +39,14 @@ def index(req, page):
                                           'sImgs': sImg,
                                           'contents': pager1.object_list,
                                           'orderImgs': pager2.object_list,
+                                          'current_page': str(page),
+                                          'page_range': paginator.page_range
                                           })
     return render(req, 'index.html', {'sImgs': sImg,
                                       'contents': pager1.object_list,
                                       'orderImgs': pager2.object_list,
+                                      'current_page': str(page),
+                                      'page_range': paginator.page_range
                                       })
 
 
