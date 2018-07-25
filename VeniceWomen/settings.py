@@ -82,7 +82,7 @@ WSGI_APPLICATION = 'VeniceWomen.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': '',
+        'NAME': 'women',
         'HOST': '',
         'PORT': '3306',
         'USER': '',

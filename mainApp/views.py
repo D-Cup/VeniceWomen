@@ -22,7 +22,7 @@ def index(req, page):
     orderImg = content.objects.order_by('-cnt').all()
 
     paginator = Paginator(contents, 15)
-    paginator2 = Paginator(orderImg, 20)
+    paginator2 = Paginator(orderImg, 15)
     pager1 = paginator.page(page)
     pager2 = paginator2.page(page)
     if id == None:
